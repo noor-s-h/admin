@@ -1,7 +1,7 @@
-FROM docker.io/bitnami/laravel:9
+FROM php:apache
 
 COPY . .
 
-WORKDIR /app
-
-EXPOSE 8000
+RUN usermod -s /bin/bash www-data
+RUN chown www-data:www-data /var/www
+USER www-data:www-data
